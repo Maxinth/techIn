@@ -2,14 +2,26 @@
 import { IRole } from "../../common/interfaces";
 import { ISignData } from "../../pages/signup";
 import {
+  FieldError,
   FieldValues,
   UseFormRegister,
   UseFormRegisterReturn,
 } from "react-hook-form";
-import { FieldBox, InputBox, Label, Option, SelectBox } from "./styled";
+import {
+  FieldBox,
+  InputBox,
+  Label,
+  Option,
+  SelectBox,
+  ErrorBox,
+} from "./styled";
 // import {useRef} from 'react'
 import React from "react";
 type FormVal = "email" | "fullName" | "password" | "role";
+
+interface IMessage {
+  message: string;
+}
 export interface IFieldProps {
   type?: string;
   value?: string;
@@ -17,7 +29,7 @@ export interface IFieldProps {
   label?: string;
   options?: IRole[];
   id?: FormVal;
-  // register?: UseFormRegisterReturn<FormVal>;
+  errorMessage?: string;
   register?: UseFormRegister<ISignData>;
 }
 
@@ -28,6 +40,7 @@ const FieldInput = ({
   options = [],
   id,
   register,
+  errorMessage,
 }: IFieldProps) => {
   return (
     <FieldBox type={type}>
@@ -47,6 +60,8 @@ const FieldInput = ({
           ))}
         </SelectBox>
       )}
+
+      {errorMessage && <ErrorBox>{errorMessage}</ErrorBox>}
     </FieldBox>
   );
 };

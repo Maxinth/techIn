@@ -81,4 +81,24 @@ const Button = styled.button`
 `;
 const Option = styled.option``;
 
-export { Button, Option, InputBox, Form, Label, FieldBox, Heading, SelectBox };
+const ErrorBox = styled.div`
+  font-family: "Inter";
+  color: red;
+  font-style: italic;
+  font-weight: 400;
+  width: 100%;
+  padding: 9px;
+  font-size: 14px;
+`;
+
+export {
+  Button,
+  Option,
+  InputBox,
+  Form,
+  Label,
+  FieldBox,
+  Heading,
+  SelectBox,
+  ErrorBox,
+};

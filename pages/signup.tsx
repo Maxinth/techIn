@@ -33,42 +33,42 @@ const SignUp: NextPage = () => {
     reset();
   };
 
-  console.log(register);
+  // console.log(register);
 
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
       <Heading>Signup</Heading>
       <FieldInput
         type="email"
-        value=""
         placeholder="Enter your email address"
         label="Email address"
         id="email"
         register={register}
+        errorMessage={errors?.email?.message}
       />
       <FieldInput
         type="password"
-        value=""
         placeholder="Enter your password"
         label="Password"
         id="password"
         register={register}
+        errorMessage={errors?.password?.message}
       />
       <FieldInput
         type="text"
-        value=""
         placeholder="Enter your full name"
         label="Full name"
         id="fullName"
         register={register}
+        errorMessage={errors?.fullName?.message}
       />
       <FieldInput
         type="select"
-        value=""
         label="What is your role"
         options={roles}
         id="role"
         register={register}
+        errorMessage={errors?.role?.message}
       />
       <Button type="submit">Sign up</Button>
     </Form>
