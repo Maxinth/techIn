@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { IFieldProps } from "./FieldInput";
 
 const InputBox = styled.input`
   /* max-width: 528px; */
@@ -11,10 +12,15 @@ const InputBox = styled.input`
 `;
 const Form = styled.form`
   margin: 0 auto;
-  padding: 0rem 4rem;
+  padding: 0rem 1rem;
   margin-top: 158px;
   max-width: 528px;
   width: 100%;
+  transition: padding 0.2s;
+
+  @media (min-width: 900px) {
+    padding: 0rem 4rem;
+  }
   /* overflow: hidden; */
 `;
 
@@ -33,15 +39,28 @@ const Label = styled.label`
   margin-bottom: 12px;
   font-weight: 400;
 `;
-const FieldBox = styled.div`
+const FieldBox = styled.div<IFieldProps>`
   width: 100%;
-  /* max-width: 528px; */
-  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  margin-bottom: 39px;
+
+  ${({ type }) =>
+    type === "select" &&
+    css`
+      margin-bottom: 52px;
+    `}
 `;
 
-export { InputBox, Form, Label, FieldBox, Heading };
+const SelectBox = styled.select`
+  padding: 17px 20px;
+  width: 100%;
+  border: 1px solid #eaeced;
+  background-color: #f9fbfc;
+`;
+const Option = styled.option``;
+
+export { Option, InputBox, Form, Label, FieldBox, Heading, SelectBox };

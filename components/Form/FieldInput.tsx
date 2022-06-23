@@ -1,10 +1,19 @@
-import { FieldBox, InputBox, Label } from "./styled";
+import { FieldBox, InputBox, Label, Option, SelectBox } from "./styled";
 
-const FieldInput = () => {
+export interface IFieldProps {
+  type?: string;
+}
+
+const FieldInput = ({ type = "" }: IFieldProps) => {
   return (
-    <FieldBox>
+    <FieldBox type={type}>
       <Label>Email Address</Label>
-      <InputBox />
+      {type === "input" && <InputBox />}
+      {type === "select" && (
+        <SelectBox>
+          <Option>text</Option>
+        </SelectBox>
+      )}
     </FieldBox>
   );
 };

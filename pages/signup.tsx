@@ -6,7 +6,7 @@ const SignUp: NextPage = () => {
   return (
     <Form>
       <Heading>Signup</Heading>
-      <FieldInput />
+      <FieldInput type="select" />
     </Form>
   );
 };
