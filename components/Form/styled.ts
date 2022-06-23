@@ -17,7 +17,7 @@ const Form = styled.form`
   max-width: 528px;
   width: 100%;
   transition: padding 0.2s;
-
+  margin-bottom: 100px;
   @media (min-width: 900px) {
     padding: 0rem 4rem;
   }
@@ -61,6 +61,24 @@ const SelectBox = styled.select`
   border: 1px solid #eaeced;
   background-color: #f9fbfc;
 `;
+
+const Button = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  /* purple */
+  font-size: 17px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #ffffff;
+  background: #7d5fff;
+  border-radius: 6px;
+`;
 const Option = styled.option``;
 
-export { Option, InputBox, Form, Label, FieldBox, Heading, SelectBox };
+export { Button, Option, InputBox, Form, Label, FieldBox, Heading, SelectBox };

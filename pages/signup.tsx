@@ -1,12 +1,31 @@
 import { NextPage } from "next";
 import FieldInput from "../components/Form/FieldInput";
-import { Form, Heading } from "../components/Form/styled";
+import { Button, Form, Heading } from "../components/Form/styled";
 
 const SignUp: NextPage = () => {
   return (
     <Form>
       <Heading>Signup</Heading>
-      <FieldInput type="select" />
+      <FieldInput
+        type="input"
+        value=""
+        placeholder="Enter your email address"
+        label="Email address"
+      />
+      <FieldInput
+        type="password"
+        value=""
+        placeholder="Enter your password"
+        label="Password"
+      />
+      <FieldInput
+        type="input"
+        value=""
+        placeholder="Enter your full name"
+        label="Full name"
+      />
+      <FieldInput type="select" value="" label="What is your role" />
+      <Button>Sign up</Button>
     </Form>
   );
 };
