@@ -1,3 +1,4 @@
+import { IRole } from "../../common/interfaces";
 import { FieldBox, InputBox, Label, Option, SelectBox } from "./styled";
 
 export interface IFieldProps {
@@ -5,6 +6,7 @@ export interface IFieldProps {
   value?: string;
   placeholder?: string;
   label?: string;
+  options?: IRole[];
 }
 
 const FieldInput = ({
@@ -12,6 +14,7 @@ const FieldInput = ({
   value,
   label,
   placeholder,
+  options = [],
 }: IFieldProps) => {
   return (
     <FieldBox type={type}>
@@ -21,7 +24,9 @@ const FieldInput = ({
       )}
       {type === "select" && (
         <SelectBox value={value}>
-          <Option>text</Option>
+          {options?.map((item: IRole) => (
+            <Option key={item?.name}>{item?.name}</Option>
+          ))}
         </SelectBox>
       )}
     </FieldBox>
