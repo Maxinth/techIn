@@ -1,7 +1,15 @@
+/* eslint-disable react/display-name */
 import { IRole } from "../../common/interfaces";
-// import { ISignData } from "../../pages/signup";
+import { ISignData } from "../../pages/signup";
+import {
+  FieldValues,
+  UseFormRegister,
+  UseFormRegisterReturn,
+} from "react-hook-form";
 import { FieldBox, InputBox, Label, Option, SelectBox } from "./styled";
-
+// import {useRef} from 'react'
+import React from "react";
+type FormVal = "email" | "fullName" | "password" | "role";
 export interface IFieldProps {
   type?: string;
   value?: string;
@@ -9,27 +17,37 @@ export interface IFieldProps {
   label?: string;
   options?: IRole[];
   id?: string;
-  name?: string;
-  // ref?: <ISignData>;
+  // register?: UseFormRegisterReturn<FormVal>;
+  register?: UseFormRegister<ISignData>;
 }
 
 const FieldInput = ({
   type = "input",
-  value,
   label,
   placeholder,
   options = [],
   id,
-  ...rest
+  ...register
 }: IFieldProps) => {
   return (
     <FieldBox type={type}>
       <Label htmlFor={id}>{label}</Label>
-      {(type === "input" || type === "password") && (
-        <InputBox type={type} placeholder={placeholder} id={id} {...rest} />
+      {(type === "text" || type === "password" || type === "email") && (
+        <InputBox
+          type={type}
+          placeholder={placeholder}
+          id={id}
+          {...register}
+          // value={regist}
+          // onChange={register?.on}
+        />
       )}
       {type === "select" && (
-        <SelectBox id={id} {...rest}>
+        <SelectBox
+          id={id}
+          {...register}
+          // value={register?.value}
+        >
           {options?.map((item: IRole) => (
             <Option key={item?.name}>{item?.name}</Option>
           ))}

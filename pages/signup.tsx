@@ -2,11 +2,10 @@ import { NextPage } from "next";
 import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
 import { roles } from "../components/Form/data";
-import { useState } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "../utils/validations";
-import { useRef } from "react";
 
 export interface ISignData {
   email: string;
@@ -25,29 +24,35 @@ const SignUp: NextPage = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
-  // const onSubmitHandler = (data: any) => {
-  //   console.log(data);
-  //   // console.log();
-  //   reset();
-  // };
+  const onSubmitHandler = (data: ISignData) => {
+    console.log("handler clicked");
+    console.log({ data });
 
-  const myhandleSubmit = () => {
-    console.log({ ...register });
+    console.log({ errors });
+    // console.log();
+    reset();
   };
 
-  const ref = useRef();
+  // const myhandleSubmit = (data: ISignData) => {
+  //   console.log({data});
+  // };
+
+  console.log(register("fullName"));
+
+  const ref = useRef(null);
 
   return (
-    <Form onSubmit={myhandleSubmit}>
+    <Form onSubmit={handleSubmit(onSubmitHandler)}>
       <Heading>Signup</Heading>
       <FieldInput
-        type="input"
+        type="email"
         value=""
         placeholder="Enter your email address"
         label="Email address"
         id="email"
-        name="email"
-        // ref={register}
+        {...register("email")}
+
+        // register={register}
       />
       <FieldInput
         type="password"
@@ -56,14 +61,20 @@ const SignUp: NextPage = () => {
         label="Password"
         id="password"
         {...register("password")}
+
+        // register={register}
+        // register={register("password")}
       />
       <FieldInput
-        type="input"
+        type="text"
         value=""
         placeholder="Enter your full name"
         label="Full name"
         id="fullName"
         {...register("fullName")}
+
+        // register={register}
+        // register={register("fullName")}
       />
       <FieldInput
         type="select"
@@ -72,8 +83,11 @@ const SignUp: NextPage = () => {
         options={roles}
         id="role"
         {...register("role")}
+
+        // register={register}
+        // register={register("role")}
       />
-      <Button>Sign up</Button>
+      <Button type="submit">Sign up</Button>
     </Form>
   );
 };

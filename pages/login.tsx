@@ -7,7 +7,7 @@ const Login: NextPage = () => {
     <Form>
       <Heading>Login</Heading>
       <FieldInput
-        type="input"
+        type="text"
         value=""
         placeholder="Enter your email address"
         label="Email address"
