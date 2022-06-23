@@ -17,7 +17,7 @@ import {
 } from "./styled";
 // import {useRef} from 'react'
 import React from "react";
-type FormVal = "email" | "fullName" | "password" | "role";
+type FormVal = "email" | "fullName" | "password" | "userType";
 
 interface IMessage {
   message: string;

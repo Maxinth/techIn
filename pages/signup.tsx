@@ -2,15 +2,16 @@ import { NextPage } from "next";
 import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
 import { roles } from "../components/Form/data";
-import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "../utils/validations";
-
+import { baseUrl } from "../components/Form/data";
+import axios from "axios";
+import Router from "next/router";
 export interface ISignData {
   email: string;
   password: string;
-  role: string;
+  userType: string;
   fullName: string;
 }
 
@@ -25,15 +26,19 @@ const SignUp: NextPage = () => {
   });
 
   const onSubmitHandler = (data: ISignData) => {
-    console.log("handler clicked");
     console.log({ data });
+    // axios
+    //   .post(`${baseUrl}/user/create`, { ...data })
+    //   .then((res) => {
+    //     console.log(res);
+    //     Router.push("/login");
+    //   })
+    //   .catch((error) => console.log(error));
 
-    console.log({ errors });
-    // console.log();
     reset();
   };
 
-  // console.log(register);
+  // console.log(baseUrl);
 
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -66,11 +71,13 @@ const SignUp: NextPage = () => {
         type="select"
         label="What is your role"
         options={roles}
-        id="role"
+        id="userType"
         register={register}
-        errorMessage={errors?.role?.message}
+        errorMessage={errors?.userType?.message}
       />
-      <Button type="submit">Sign up</Button>
+      <Button type="submit" onClick={handleSubmit(onSubmitHandler)}>
+        Sign up
+      </Button>
     </Form>
   );
 };

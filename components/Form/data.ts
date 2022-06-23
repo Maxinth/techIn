@@ -17,3 +17,5 @@ export const roles: IRole[] = [
     name: "Product Designer",
   },
 ];
+
+export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
