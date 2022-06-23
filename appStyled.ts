@@ -6,9 +6,8 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-   
-    font-family: Inter, Helvetica, Sans-Serif;
+    font-family: Inter;
   }
 `;
 
-export default GlobalStyle;
+export { GlobalStyle };
