@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 528px;
     margin: 0 auto;
+    background-color: #f5f5f5;
   }
 
   #__next{

@@ -16,8 +16,8 @@ const FieldInput = ({
   return (
     <FieldBox type={type}>
       <Label>{label}</Label>
-      {type === "input" && (
-        <InputBox value={value} type="text" placeholder={placeholder} />
+      {(type === "input" || type === "password") && (
+        <InputBox value={value} type={type} placeholder={placeholder} />
       )}
       {type === "select" && (
         <SelectBox value={value}>
