@@ -11,12 +11,14 @@ const Login: NextPage = () => {
         value=""
         placeholder="Enter your email address"
         label="Email address"
+        id="email"
       />
       <FieldInput
         type="password"
         value=""
         placeholder="Enter your password"
         label="Password"
+        id="password"
       />
       <Button>Log in</Button>
     </Form>

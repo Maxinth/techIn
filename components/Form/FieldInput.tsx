@@ -1,4 +1,5 @@
 import { IRole } from "../../common/interfaces";
+// import { ISignData } from "../../pages/signup";
 import { FieldBox, InputBox, Label, Option, SelectBox } from "./styled";
 
 export interface IFieldProps {
@@ -7,6 +8,9 @@ export interface IFieldProps {
   placeholder?: string;
   label?: string;
   options?: IRole[];
+  id?: string;
+  name?: string;
+  // ref?: <ISignData>;
 }
 
 const FieldInput = ({
@@ -15,15 +19,17 @@ const FieldInput = ({
   label,
   placeholder,
   options = [],
+  id,
+  ...rest
 }: IFieldProps) => {
   return (
     <FieldBox type={type}>
-      <Label>{label}</Label>
+      <Label htmlFor={id}>{label}</Label>
       {(type === "input" || type === "password") && (
-        <InputBox value={value} type={type} placeholder={placeholder} />
+        <InputBox type={type} placeholder={placeholder} id={id} {...rest} />
       )}
       {type === "select" && (
-        <SelectBox value={value}>
+        <SelectBox id={id} {...rest}>
           {options?.map((item: IRole) => (
             <Option key={item?.name}>{item?.name}</Option>
           ))}
