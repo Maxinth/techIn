@@ -16,7 +16,7 @@ export interface IFieldProps {
   placeholder?: string;
   label?: string;
   options?: IRole[];
-  id?: string;
+  id?: FormVal;
   // register?: UseFormRegisterReturn<FormVal>;
   register?: UseFormRegister<ISignData>;
 }
@@ -27,7 +27,7 @@ const FieldInput = ({
   placeholder,
   options = [],
   id,
-  ...register
+  register,
 }: IFieldProps) => {
   return (
     <FieldBox type={type}>
@@ -37,17 +37,11 @@ const FieldInput = ({
           type={type}
           placeholder={placeholder}
           id={id}
-          {...register}
-          // value={regist}
-          // onChange={register?.on}
+          {...register?.(id as FormVal)}
         />
       )}
       {type === "select" && (
-        <SelectBox
-          id={id}
-          {...register}
-          // value={register?.value}
-        >
+        <SelectBox id={id} {...register?.(id as FormVal)}>
           {options?.map((item: IRole) => (
             <Option key={item?.name}>{item?.name}</Option>
           ))}

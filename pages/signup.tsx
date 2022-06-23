@@ -33,13 +33,7 @@ const SignUp: NextPage = () => {
     reset();
   };
 
-  // const myhandleSubmit = (data: ISignData) => {
-  //   console.log({data});
-  // };
-
-  console.log(register("fullName"));
-
-  const ref = useRef(null);
+  console.log(register);
 
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -50,9 +44,7 @@ const SignUp: NextPage = () => {
         placeholder="Enter your email address"
         label="Email address"
         id="email"
-        {...register("email")}
-
-        // register={register}
+        register={register}
       />
       <FieldInput
         type="password"
@@ -60,10 +52,7 @@ const SignUp: NextPage = () => {
         placeholder="Enter your password"
         label="Password"
         id="password"
-        {...register("password")}
-
-        // register={register}
-        // register={register("password")}
+        register={register}
       />
       <FieldInput
         type="text"
@@ -71,10 +60,7 @@ const SignUp: NextPage = () => {
         placeholder="Enter your full name"
         label="Full name"
         id="fullName"
-        {...register("fullName")}
-
-        // register={register}
-        // register={register("fullName")}
+        register={register}
       />
       <FieldInput
         type="select"
@@ -82,10 +68,7 @@ const SignUp: NextPage = () => {
         label="What is your role"
         options={roles}
         id="role"
-        {...register("role")}
-
-        // register={register}
-        // register={register("role")}
+        register={register}
       />
       <Button type="submit">Sign up</Button>
     </Form>
