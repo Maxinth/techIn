@@ -25,9 +25,18 @@ const SignUp: NextPage = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const onSubmitHandler = (data: ISignData) => {
+  const onSubmitHandler = (
+    data: ISignData
+    // e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     console.log({ data });
-    console.log("button clicked");
+    // console.log("button clicked");
+
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      console.log("button clicked");
+      // reset();
+    };
     // axios
     //   .post(`${baseUrl}/user/create`, { ...data })
     //   .then((res) => {
@@ -35,14 +44,23 @@ const SignUp: NextPage = () => {
     //     Router.push("/login");
     //   })
     //   .catch((error) => console.log(error));
-
-    reset();
   };
 
   // console.log(baseUrl);
 
+  const customHandler = () => {
+    console.log("btn clicked!");
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      console.log("inner block called");
+    };
+  };
+
   return (
-    <Form onSubmit={handleSubmit(onSubmitHandler)}>
+    <Form
+      // onSubmit={() => handleSubmit(onSubmitHandler)}
+      onSubmit={() => handleSubmit(customHandler)}
+    >
       <Heading>Signup</Heading>
       <FieldInput
         type="email"
@@ -76,7 +94,10 @@ const SignUp: NextPage = () => {
         register={register}
         errorMessage={errors?.userType?.message}
       />
-      <Button type="submit" onClick={handleSubmit(onSubmitHandler)}>
+      <Button
+        type="submit"
+        // onClick={handleSubmit(onSubmitHandler)}
+      >
         Sign up
       </Button>
     </Form>

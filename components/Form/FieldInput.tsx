@@ -1,12 +1,7 @@
 /* eslint-disable react/display-name */
 import { IRole } from "../../common/interfaces";
 import { ISignData } from "../../pages/signup";
-import {
-  FieldError,
-  FieldValues,
-  UseFormRegister,
-  UseFormRegisterReturn,
-} from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import {
   FieldBox,
   InputBox,
