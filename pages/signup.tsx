@@ -8,14 +8,16 @@ import { SignUpSchema } from "../utils/validations";
 import { baseUrl } from "../components/Form/data";
 import axios from "axios";
 import Router from "next/router";
+import { useState } from "react";
+
 export interface ISignData {
   email: string;
   password: string;
-  userType: string;
+  userType: "Student" | "Teacher";
   fullName: string;
 }
 
-const SignUp: NextPage = () => {
+const SignUp = () => {
   const {
     register,
     handleSubmit,
@@ -25,64 +27,58 @@ const SignUp: NextPage = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const onSubmitHandler = (
-    data: ISignData
-    // e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const onSubmitHandler = (data: ISignData) => {
     console.log({ data });
-    // console.log("button clicked");
-
-    // axios
-    //   .post(`${baseUrl}/user/create`, { ...data })
-    //   .then((res) => {
-    //     console.log(res);
-    //     Router.push("/login");
-    //   })
-    //   .catch((error) => console.log(error));
+    return axios
+      .post(`${baseUrl}user/create`, { ...data })
+      .then((res) => {
+        console.log(res);
+        reset();
+        Router.push("/login");
+      })
+      .catch((error) => console.log(error));
   };
 
   // console.log(baseUrl);
 
-  const customHandler = (data: ISignData) => {
-    console.log("btn clicked!", data);
-    return (e: Event) => {
-      e.preventDefault();
-    };
+  // const customHandler = (data: ISignData) => {
+  //   console.log("btn clicked!", data);
 
-    // return (e: React.ChangeEvent<HTMLInputElement>) => {
-    //   e.preventDefault();
-    //   console.log("inner block called");
-    //   return axios
-    //     .post(`${baseUrl}/user/create`, { ...data })
-    //     .then((res) => {
-    //       console.log(res);
-    //       Router.push("/login");
-    //     })
-    //     .catch((error) => console.log(error));
-    // };
+  // return (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   e.preventDefault();
+  //   console.log("inner block called");
+  //   return axios
+  //     .post(`${baseUrl}/user/create`, { ...data })
+  //     .then((res) => {
+  //       console.log(res);
+  //       Router.push("/login");
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
-    // const form = new FormData();
-    // form.append("email", data?.email);
-    // form.append("password", data?.password);
-    // form.append("fullName", data?.fullName);
-    // form.append("userType", data?.userType);
+  // const form = new FormData();
+  // form.append("email", data?.email);
+  // form.append("password", data?.password);
+  // form.append("fullName", data?.fullName);
+  // form.append("userType", data?.userType);
 
-    // const response = await axios({
-    //   method: "post",
-    //   url: `${baseUrl}/user/create`,
-    //   data: form,
-    //   headers: {
-    //     "Content-Type": `multipart/form-data`,
-    //   },
-    // });
+  // const response = await axios({
+  //   method: "post",
+  //   url: `${baseUrl}/user/create`,
+  //   data: form,
+  //   headers: {
+  //     "Content-Type": `multipart/form-data`,
+  //   },
+  // });
 
-    // console.log(response);
-  };
+  // console.log(response);
+  // };
 
   return (
     <Form
       // onSubmit={() => handleSubmit(onSubmitHandler)}
-      onSubmit={handleSubmit(customHandler)}
+      onSubmit={handleSubmit(onSubmitHandler)}
+      {...register}
     >
       <Heading>Signup</Heading>
       <FieldInput
@@ -118,8 +114,8 @@ const SignUp: NextPage = () => {
         errorMessage={errors?.userType?.message}
       />
       <Button
-        type="submit"
-        // onClick={handleSubmit(onSubmitHandler)}
+      // type="submit"
+      // onClick={handleSubmit(onSubmitHandler)}
       >
         Sign up
       </Button>

@@ -8,7 +8,7 @@ import {
   Label,
   Option,
   SelectBox,
-  // ErrorBox,
+  ErrorBox,
 } from "./styled";
 
 import React from "react";
@@ -56,7 +56,7 @@ const FieldInput = ({
         </SelectBox>
       )}
 
-      {/* {errorMessage && <ErrorBox>{errorMessage}</ErrorBox>} */}
+      {errorMessage && <ErrorBox>{errorMessage}</ErrorBox>}
     </FieldBox>
   );
 };
