@@ -44,8 +44,11 @@ const Login = () => {
       .catch((error) => {
         showToast(
           "error",
-          error?.response?.data?.message ||
-            "Please check your network and try again!"
+          `Login failed :  ${error?.response?.data?.message}` ||
+            "Login failed : Please check your network and try again!",
+          false,
+          "/login",
+          3000
         );
         console.log(error);
       });

@@ -46,8 +46,11 @@ const SignUp = () => {
       .catch((error) => {
         showToast(
           "error",
-          error?.response?.data?.message ||
-            "Please check your network and try again!"
+          `Sign up failed :  ${error?.response?.data?.message}` ||
+            "Sign up failed : Please check your network and try again!",
+          false,
+          "/signup",
+          3000
         );
       });
   };
