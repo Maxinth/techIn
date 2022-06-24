@@ -8,9 +8,9 @@ import {
   Label,
   Option,
   SelectBox,
-  ErrorBox,
+  // ErrorBox,
 } from "./styled";
-// import {useRef} from 'react'
+
 import React from "react";
 type FormVal = "email" | "fullName" | "password" | "userType";
 
@@ -56,7 +56,7 @@ const FieldInput = ({
         </SelectBox>
       )}
 
-      {errorMessage && <ErrorBox>{errorMessage}</ErrorBox>}
+      {/* {errorMessage && <ErrorBox>{errorMessage}</ErrorBox>} */}
     </FieldBox>
   );
 };

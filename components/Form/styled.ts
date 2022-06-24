@@ -71,6 +71,7 @@ const Button = styled.button`
   width: 100%;
   border: none;
   outline: none;
+  cursor: pointer;
   /* purple */
   font-size: 17px;
   line-height: 21px;
