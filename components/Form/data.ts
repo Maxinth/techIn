@@ -4,17 +4,17 @@ export const roles: IRole[] = [
   {
     id: 1,
     value: "Dev",
-    name: "Student",
+    name: "student",
   },
   {
     id: 2,
     value: "Market",
-    name: "Teacher",
+    name: "teacher",
   },
   {
     id: 3,
     value: "UI",
-    name: "Student",
+    name: "student",
   },
 ];
 
