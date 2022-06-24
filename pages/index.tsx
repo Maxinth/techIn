@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import { useEffect } from "react";
 import Router from "next/router";
-import { Button } from "../components/Form/styled";
+import { Button, Heading } from "../components/Form/styled";
 import { deleteAllCookies } from "../utils/funcs";
+import { HomeContainer } from "../appStyled";
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -10,7 +11,7 @@ const Home: NextPage = () => {
     // console.log(document.cookie);
     if (!document.cookie) {
       // if no cookies exist take user back to /signup
-      Router.push("/signup");
+      Router.replace("/signup");
     }
   }, []);
 
@@ -23,9 +24,10 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div>
+    <HomeContainer>
+      <Heading>Hello There!</Heading>
       <Button onClick={handleClick}>See my Portfolio</Button>
-    </div>
+    </HomeContainer>
   );
 };
 
