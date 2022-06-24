@@ -1,6 +1,7 @@
 import { IRole } from "../../common/interfaces";
 import { ToastPosition } from "react-toastify";
 import { toast } from "react-toastify";
+import Router from "next/router";
 export interface ToastOptns {
   position: ToastPosition;
   autoClose: number;
@@ -27,7 +28,7 @@ export const roles: IRole[] = [
 
 export const toastOptions: ToastOptns = {
   position: "top-right",
-  autoClose: 300000,
+  autoClose: 2000,
   hideProgressBar: true,
   closeOnClick: true,
   pauseOnHover: true,
@@ -36,7 +37,22 @@ export const toastOptions: ToastOptns = {
   theme: "colored",
 };
 
-export const showToast = (id: "success" | "error", msg: string) => {
-  return toast[`${id}`](msg, toastOptions);
+export const showToast = (
+  id: "success" | "error",
+  msg: string,
+  navigate?: boolean,
+  path?: string
+) => {
+  toast[`${id}`](msg, toastOptions);
+  // if navigate is supplied, move to path supplied
+  if (navigate) {
+    return setTimeout(() => {
+      console.log("setTimeout");
+      Router.push(`/${path}`);
+    }, 3000);
+  }
+  // else just show toast and do nothing.
+  return null;
 };
+
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;

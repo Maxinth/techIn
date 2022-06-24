@@ -12,6 +12,7 @@ import {
 } from "./styled";
 
 import React from "react";
+import { ILoginData } from "../../pages/login";
 type FormVal = "email" | "fullName" | "password" | "userType";
 
 interface IMessage {

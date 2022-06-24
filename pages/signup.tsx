@@ -11,8 +11,8 @@ import Router from "next/router";
 export interface ISignData {
   email: string;
   password: string;
-  userType: "student" | "teacher";
-  fullName: string;
+  userType?: "student" | "teacher";
+  fullName?: string;
 }
 
 const SignUp = () => {
@@ -34,11 +34,7 @@ const SignUp = () => {
       .post(`${baseUrl}user/create`, { ...data })
       .then((res) => {
         console.log(res);
-        showToast("success", "Sign up successful");
-        // setTimeout(() => {
-        //   reset();
-        //   Router.push("/login");
-        // }, 2000);
+        showToast("success", "Sign up successful", true, "login");
       })
       .catch((error) => {
         showToast("error", error?.response?.data?.message);
@@ -47,7 +43,10 @@ const SignUp = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmitHandler)} {...register}>
+    <Form
+      onSubmit={handleSubmit(onSubmitHandler)}
+      // {...register}
+    >
       <Heading>Signup</Heading>
       <FieldInput
         type="email"
