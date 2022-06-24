@@ -33,6 +33,17 @@ const GlobalStyle = createGlobalStyle`
     font-size: 14px !important;
     line-height: 17px !important;
     color: #ffffff;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+
+  .Toastify__toast-theme--colored.Toastify__toast--success{
+    background-color: #10B981;
+     font-size: 14px !important;
+    line-height: 17px !important;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 5px;
   }
 `;
 

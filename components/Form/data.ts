@@ -1,5 +1,6 @@
 import { IRole } from "../../common/interfaces";
 import { ToastPosition } from "react-toastify";
+import { toast } from "react-toastify";
 export interface ToastOptns {
   position: ToastPosition;
   autoClose: number;
@@ -35,4 +36,7 @@ export const toastOptions: ToastOptns = {
   theme: "colored",
 };
 
+export const showToast = (id: "success" | "error", msg: string) => {
+  return toast[`${id}`](msg, toastOptions);
+};
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;

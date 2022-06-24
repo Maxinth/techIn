@@ -1,13 +1,12 @@
 import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
-import { roles, toastOptions } from "../components/Form/data";
+import { roles, showToast } from "../components/Form/data";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "../utils/validations";
 import { baseUrl } from "../components/Form/data";
 import axios from "axios";
 import Router from "next/router";
-import { toast } from "react-toastify";
 
 export interface ISignData {
   email: string;
@@ -26,8 +25,8 @@ const SignUp = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const showToast = (id: "success" | "error", msg: string) =>
-    toast[`${id}`](msg, toastOptions);
+  // const showToast = (id: "success" | "error", msg: string) =>
+  //   toast[`${id}`](msg, toastOptions);
 
   const onSubmitHandler = (data: ISignData) => {
     console.log({ data });
