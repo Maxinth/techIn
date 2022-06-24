@@ -12,7 +12,7 @@ export interface ILoginData {
   email: string;
   password: string;
 }
-const Login: NextPage = () => {
+const Login = () => {
   const {
     register,
     handleSubmit,
@@ -23,30 +23,34 @@ const Login: NextPage = () => {
   });
 
   const onSubmitHandler = (data: ILoginData) => {
-    console.log({ data });
+    // console.log({ data });
+    // toast to notifying user of current action
     toast.info("Submitting your details", {
-      onClose: async () => {
-        return await axios
-          .post(`${baseUrl}user/login`, { ...data })
-          .then((res) => {
-            // save id in cookie
-
-            document.cookie = `userId=${res?.data?._id};`;
-
-            reset();
-            // show Toast
-            showToast("success", "Login successful", true, "");
-          })
-          .catch((error) => {
-            showToast("error", error?.response?.data?.message);
-            console.log(error);
-          });
-      },
-      ...toastOptions,
+      ...toastOptions(),
       autoClose: 1000,
-      delay: 1000,
+      delay: 500,
     });
+
+    // make request for login
+    axios
+      .post(`${baseUrl}user/login`, { ...data })
+      .then((res) => {
+        // save id in cookie
+        document.cookie = `userId=${res?.data?._id};`;
+        reset();
+        // show Toast
+        showToast("success", "Login successful", true, "", 500);
+      })
+      .catch((error) => {
+        showToast(
+          "error",
+          error?.response?.data?.message ||
+            "Please check your network and try again!"
+        );
+        console.log(error);
+      });
   };
+
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>
       <Heading>Login</Heading>

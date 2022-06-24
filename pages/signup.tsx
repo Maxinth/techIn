@@ -28,41 +28,28 @@ const SignUp = () => {
   const onSubmitHandler = (data: ISignData) => {
     // console.log({ data });
 
-    // showToast("info", "submitting your details...");
+    // toast for action going on
     toast.info("Submitting your details", {
-      // onOpen: () => toast.info("opened"),
-      ...toastOptions,
+      ...toastOptions(),
       autoClose: 1000,
       delay: 500,
     });
 
+    // make request to sign up
     axios
       .post(`${baseUrl}user/create`, { ...data })
       .then((res) => {
         console.log(res);
-        showToast("success", "Sign up successful", true, "login");
+        showToast("success", "Sign up successful", true, "login", 500);
         reset();
       })
       .catch((error) => {
         showToast(
           "error",
-          error?.response?.data?.message || "Please check your network!"
+          error?.response?.data?.message ||
+            "Please check your network and try again!"
         );
       });
-
-    // return axios
-    //   .post(`${baseUrl}user/create`, { ...data })
-    //   .then((res) => {
-    //     console.log(res);
-    //     showToast("success", "Sign up successful", true, "login");
-    //     reset();
-    //   })
-    //   .catch((error) => {
-    //     showToast(
-    //       "error",
-    //       error?.response?.data?.message || "Please check your network!"
-    //     );
-    //   });
   };
 
   return (

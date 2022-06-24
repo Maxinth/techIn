@@ -45,6 +45,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     border-radius: 5px;
   }
+
+  .Toastify__toast-theme--colored.Toastify__toast--info{
+    font-size: 14px !important;
+    line-height: 17px !important;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 5px;
+  }
 `;
 
 const HomeContainer = styled.section`
@@ -53,6 +61,15 @@ const HomeContainer = styled.section`
   align-items: center;
   height: 100vh;
   flex-direction: column;
+  padding: 1rem;
+  h1 {
+    text-align: center;
+    line-height: 1.8;
+  }
+  & button + button {
+    margin-top: 1rem;
+    width: unset;
+  }
 `;
 
 export { GlobalStyle, HomeContainer };

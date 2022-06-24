@@ -42,25 +42,28 @@ export const roles: IRole[] = [
   // },
 ];
 
-export const toastOptions: ToastOptns = {
-  position: "top-right",
-  autoClose: 2000,
-  hideProgressBar: true,
-  closeOnClick: true,
-  pauseOnHover: true,
-  draggable: true,
-  progress: undefined,
-  theme: "colored",
-  delay: 2000,
+export const toastOptions = (closeTime: number = 500): ToastOptns => {
+  return {
+    position: "top-right",
+    autoClose: closeTime,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    delay: 1000,
+  };
 };
 
 export const showToast = (
   id: "success" | "error" | "info",
   msg: string,
   navigate?: boolean,
-  path?: string
+  path?: string,
+  closeTime: number = 2000
 ) => {
-  toast[`${id}`](msg, toastOptions);
+  toast[`${id}`](msg, toastOptions(closeTime));
   // if navigate is supplied, move to path supplied
   if (navigate) {
     return setTimeout(() => {

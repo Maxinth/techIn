@@ -15,6 +15,10 @@ const Home: NextPage = () => {
     }
   }, []);
 
+  const logOut = () => {
+    deleteAllCookies();
+    Router.replace("/login");
+  };
   const handleClick = () => {
     // clear cookie so user has to login over again
     deleteAllCookies();
@@ -25,8 +29,12 @@ const Home: NextPage = () => {
 
   return (
     <HomeContainer>
-      <Heading>Hello There!</Heading>
+      <Heading>
+        Hi There!
+        <br /> I am Tunde
+      </Heading>
       <Button onClick={handleClick}>See my Portfolio</Button>
+      <Button onClick={logOut}>Log out</Button>
     </HomeContainer>
   );
 };
