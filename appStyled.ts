@@ -25,6 +25,15 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;  
      
   }
+
+  // styles to override toast background
+.Toastify__toast-theme--colored.Toastify__toast--error,
+  .toast-error-container .toast-error-container-after{
+    background-color: #EF4444 !important;
+    font-size: 14px !important;
+    line-height: 17px !important;
+    color: #ffffff;
+  }
 `;
 
 export { GlobalStyle };

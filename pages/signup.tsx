@@ -8,6 +8,7 @@ import { baseUrl } from "../components/Form/data";
 import axios from "axios";
 import Router from "next/router";
 import { toast } from "react-toastify";
+
 export interface ISignData {
   email: string;
   password: string;
