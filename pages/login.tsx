@@ -3,12 +3,11 @@ import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
 import { baseUrl, showToast } from "../components/Form/data";
 import axios from "axios";
-import Router from "next/router";
-import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "../utils/validations";
 import { useForm } from "react-hook-form";
-
+import { toast } from "react-toastify";
+import { toastOptions } from "../components/Form/data";
 export interface ILoginData {
   email: string;
   password: string;
@@ -25,19 +24,28 @@ const Login: NextPage = () => {
 
   const onSubmitHandler = (data: ILoginData) => {
     console.log({ data });
-    return axios
-      .post(`${baseUrl}user/login`, { ...data })
-      .then((res) => {
-        // save id in cookie
-        document.cookie = `userId=${res?.data?._id};`;
-        reset();
-        // show Toast
-        showToast("success", "Login successful", true, "");
-      })
-      .catch((error) => {
-        showToast("error", error?.response?.data?.message);
-        console.log(error);
-      });
+    toast.info("Submitting your details", {
+      onClose: async () => {
+        return await axios
+          .post(`${baseUrl}user/login`, { ...data })
+          .then((res) => {
+            // save id in cookie
+
+            document.cookie = `userId=${res?.data?._id};`;
+
+            reset();
+            // show Toast
+            showToast("success", "Login successful", true, "");
+          })
+          .catch((error) => {
+            showToast("error", error?.response?.data?.message);
+            console.log(error);
+          });
+      },
+      ...toastOptions,
+      autoClose: 1000,
+      delay: 1000,
+    });
   };
   return (
     <Form onSubmit={handleSubmit(onSubmitHandler)}>

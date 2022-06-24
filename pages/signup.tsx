@@ -1,12 +1,12 @@
 import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
-import { roles, showToast } from "../components/Form/data";
+import { roles, showToast, toastOptions } from "../components/Form/data";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "../utils/validations";
 import { baseUrl } from "../components/Form/data";
 import axios from "axios";
-import Router from "next/router";
+import { toast } from "react-toastify";
 
 export interface ISignData {
   email: string;
@@ -27,15 +27,42 @@ const SignUp = () => {
 
   const onSubmitHandler = (data: ISignData) => {
     // console.log({ data });
-    return axios
+
+    // showToast("info", "submitting your details...");
+    toast.info("Submitting your details", {
+      // onOpen: () => toast.info("opened"),
+      ...toastOptions,
+      autoClose: 1000,
+      delay: 500,
+    });
+
+    axios
       .post(`${baseUrl}user/create`, { ...data })
       .then((res) => {
         console.log(res);
         showToast("success", "Sign up successful", true, "login");
+        reset();
       })
       .catch((error) => {
-        showToast("error", error?.response?.data?.message);
+        showToast(
+          "error",
+          error?.response?.data?.message || "Please check your network!"
+        );
       });
+
+    // return axios
+    //   .post(`${baseUrl}user/create`, { ...data })
+    //   .then((res) => {
+    //     console.log(res);
+    //     showToast("success", "Sign up successful", true, "login");
+    //     reset();
+    //   })
+    //   .catch((error) => {
+    //     showToast(
+    //       "error",
+    //       error?.response?.data?.message || "Please check your network!"
+    //     );
+    //   });
   };
 
   return (

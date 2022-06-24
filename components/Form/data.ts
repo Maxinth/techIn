@@ -11,6 +11,7 @@ export interface ToastOptns {
   draggable: boolean;
   progress: undefined;
   theme: "colored";
+  delay: number;
 }
 export const roles: IRole[] = [
   {
@@ -50,10 +51,11 @@ export const toastOptions: ToastOptns = {
   draggable: true,
   progress: undefined,
   theme: "colored",
+  delay: 2000,
 };
 
 export const showToast = (
-  id: "success" | "error",
+  id: "success" | "error" | "info",
   msg: string,
   navigate?: boolean,
   path?: string
@@ -62,9 +64,8 @@ export const showToast = (
   // if navigate is supplied, move to path supplied
   if (navigate) {
     return setTimeout(() => {
-      console.log("setTimeout");
       Router.push(`/${path}`);
-    }, 3000);
+    }, 2000);
   }
   // else just show toast and do nothing.
   return null;
