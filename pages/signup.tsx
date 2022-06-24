@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
 import { roles } from "../components/Form/data";
@@ -8,7 +7,6 @@ import { SignUpSchema } from "../utils/validations";
 import { baseUrl } from "../components/Form/data";
 import axios from "axios";
 import Router from "next/router";
-import { useState } from "react";
 
 export interface ISignData {
   email: string;

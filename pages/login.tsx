@@ -8,14 +8,12 @@ const Login: NextPage = () => {
       <Heading>Login</Heading>
       <FieldInput
         type="text"
-        value=""
         placeholder="Enter your email address"
         label="Email address"
         id="email"
       />
       <FieldInput
         type="password"
-        value=""
         placeholder="Enter your password"
         label="Password"
         id="password"
