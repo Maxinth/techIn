@@ -1,13 +1,13 @@
 import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
-import { roles } from "../components/Form/data";
+import { roles, toastOptions } from "../components/Form/data";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpSchema } from "../utils/validations";
 import { baseUrl } from "../components/Form/data";
 import axios from "axios";
 import Router from "next/router";
-
+import { toast } from "react-toastify";
 export interface ISignData {
   email: string;
   password: string;
@@ -25,14 +25,19 @@ const SignUp = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
+  const showToast = () => toast["success"]("🦄 Wow so easy!", toastOptions);
+
   const onSubmitHandler = (data: ISignData) => {
     console.log({ data });
     return axios
       .post(`${baseUrl}user/create`, { ...data })
       .then((res) => {
         console.log(res);
-        reset();
-        Router.push("/login");
+        showToast();
+        setTimeout(() => {
+          reset();
+          Router.push("/login");
+        }, 2000);
       })
       .catch((error) => console.log(error));
   };

@@ -51,7 +51,7 @@ const FieldInput = ({
       {type === "select" && (
         <SelectBox id={id} {...register?.(id as FormVal)}>
           {options?.map((item: IRole) => (
-            <Option key={item?.name}>{item?.name}</Option>
+            <Option key={item?.value}>{item?.name}</Option>
           ))}
         </SelectBox>
       )}
