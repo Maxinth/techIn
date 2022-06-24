@@ -12,12 +12,8 @@ import {
 } from "./styled";
 
 import React from "react";
-import { ILoginData } from "../../pages/login";
 type FormVal = "email" | "fullName" | "password" | "userType";
 
-interface IMessage {
-  message: string;
-}
 export interface IFieldProps {
   type?: string;
   value?: string;
@@ -52,7 +48,7 @@ const FieldInput = ({
       {type === "select" && (
         <SelectBox id={id} {...register?.(id as FormVal)}>
           {options?.map((item: IRole) => (
-            <Option key={item?.value}>{item?.name}</Option>
+            <Option key={item?.id}>{item?.name}</Option>
           ))}
         </SelectBox>
       )}

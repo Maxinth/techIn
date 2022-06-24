@@ -25,11 +25,8 @@ const SignUp = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
-  // const showToast = (id: "success" | "error", msg: string) =>
-  //   toast[`${id}`](msg, toastOptions);
-
   const onSubmitHandler = (data: ISignData) => {
-    console.log({ data });
+    // console.log({ data });
     return axios
       .post(`${baseUrl}user/create`, { ...data })
       .then((res) => {
@@ -38,7 +35,6 @@ const SignUp = () => {
       })
       .catch((error) => {
         showToast("error", error?.response?.data?.message);
-        console.log(error);
       });
   };
 

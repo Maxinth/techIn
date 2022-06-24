@@ -29,7 +29,7 @@ const Login: NextPage = () => {
       .post(`${baseUrl}user/login`, { ...data })
       .then((res) => {
         console.log(res);
-        showToast("success", "Login successful", () => {});
+        showToast("success", "Login successful", true, "");
       })
       .catch((error) => {
         showToast("error", error?.response?.data?.message);
@@ -52,6 +52,7 @@ const Login: NextPage = () => {
         placeholder="Enter your password"
         label="Password"
         id="password"
+        register={register}
         errorMessage={errors?.password?.message}
       />
       <Button>Log in</Button>

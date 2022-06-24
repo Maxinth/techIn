@@ -15,15 +15,30 @@ export interface ToastOptns {
 export const roles: IRole[] = [
   {
     id: 1,
-    value: "Dev",
+    value: "Front-End Developer Student",
     name: "student",
   },
 
   {
     id: 2,
-    value: "UI",
-    name: "Teacher",
+    value: "Front-End Developer (Teacher)",
+    name: "teacher",
   },
+  // {
+  //   id: 3,
+  //   value: "Front-End developer (Student)",
+  //   name: "student",
+  // },
+  // {
+  //   id: 4,
+  //   value: "Product Designer (Teacher)",
+  //   name: "teacher",
+  // },
+  // {
+  //   id: 5,
+  //   value: "Backend developer (Teacher)",
+  //   name: "teacher",
+  // },
 ];
 
 export const toastOptions: ToastOptns = {
