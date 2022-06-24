@@ -28,7 +28,10 @@ const Login: NextPage = () => {
     return axios
       .post(`${baseUrl}user/login`, { ...data })
       .then((res) => {
-        console.log(res);
+        // save id in cookie
+        document.cookie = `userId=${res?.data?._id};`;
+        reset();
+        // show Toast
         showToast("success", "Login successful", true, "");
       })
       .catch((error) => {

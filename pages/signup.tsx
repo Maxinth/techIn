@@ -39,10 +39,7 @@ const SignUp = () => {
   };
 
   return (
-    <Form
-      onSubmit={handleSubmit(onSubmitHandler)}
-      // {...register}
-    >
+    <Form onSubmit={handleSubmit(onSubmitHandler)}>
       <Heading>Signup</Heading>
       <FieldInput
         type="email"
@@ -76,6 +73,7 @@ const SignUp = () => {
         register={register}
         errorMessage={errors?.userType?.message}
       />
+
       <Button>Sign up</Button>
     </Form>
   );

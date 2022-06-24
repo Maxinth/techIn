@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { IFieldProps } from "./FieldInput";
+import Link from "next/link";
 
 const InputBox = styled.input`
   /* max-width: 528px; */
@@ -21,6 +22,7 @@ const Form = styled.form`
   @media (min-width: 900px) {
     padding: 0rem 4rem;
   }
+
   /* overflow: hidden; */
 `;
 
