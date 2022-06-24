@@ -40,7 +40,7 @@ const SignUp = () => {
       .post(`${baseUrl}user/create`, { ...data })
       .then((res) => {
         console.log(res);
-        showToast("success", "Sign up successful", true, "login", 500);
+        showToast("success", "Sign up successful!", true, "login", 500);
         reset();
       })
       .catch((error) => {
