@@ -27,6 +27,7 @@ const SignUp: NextPage = () => {
 
   const onSubmitHandler = (data: ISignData) => {
     console.log({ data });
+    console.log("button clicked");
     // axios
     //   .post(`${baseUrl}/user/create`, { ...data })
     //   .then((res) => {
