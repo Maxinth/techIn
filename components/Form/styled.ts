@@ -33,6 +33,11 @@ const Heading = styled.h1`
   font-weight: 700;
   margin: 0 auto;
   margin-bottom: 48px;
+  text-align: center;
+  transition: all 0.2s;
+  @media (min-width: 900px) {
+    text-align: left;
+  }
   /* max-width: 528px; */
 `;
 const Label = styled.label`
@@ -81,6 +86,14 @@ const Button = styled.button`
   color: #ffffff;
   background: #7d5fff;
   border-radius: 6px;
+  transition: all 0.2s;
+  font-weight: 700;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid #7d5fff;
+    color: #7d5fff;
+    background-color: #fff;
+  }
 `;
 const Option = styled.option``;
 
