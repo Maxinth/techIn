@@ -25,7 +25,8 @@ const SignUp = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const showToast = () => toast["success"]("🦄 Wow so easy!", toastOptions);
+  const showToast = (id: "success" | "error", msg: string) =>
+    toast[`${id}`](msg, toastOptions);
 
   const onSubmitHandler = (data: ISignData) => {
     console.log({ data });
@@ -33,13 +34,16 @@ const SignUp = () => {
       .post(`${baseUrl}user/create`, { ...data })
       .then((res) => {
         console.log(res);
-        showToast();
-        setTimeout(() => {
-          reset();
-          Router.push("/login");
-        }, 2000);
+        showToast("success", "Sign up successful");
+        // setTimeout(() => {
+        //   reset();
+        //   Router.push("/login");
+        // }, 2000);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        showToast("error", error?.response?.data?.message);
+        console.log(error);
+      });
   };
 
   return (
