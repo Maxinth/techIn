@@ -21,7 +21,6 @@ const Login = () => {
     resolver: yupResolver(LoginSchema),
   });
 
-  console.log(baseUrl);
   const onSubmitHandler = (data: ILoginData) => {
     // console.log({ data });
     // toast to notifying user of current action
