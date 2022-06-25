@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { IFieldProps } from "./FieldInput";
-import Link from "next/link";
 
 const InputBox = styled.input`
   /* max-width: 528px; */

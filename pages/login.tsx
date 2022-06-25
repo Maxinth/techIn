@@ -1,4 +1,3 @@
-import { NextPage } from "next";
 import FieldInput from "../components/Form/FieldInput";
 import { Button, Form, Heading } from "../components/Form/styled";
 import { baseUrl, showToast } from "../components/Form/data";
