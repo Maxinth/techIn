@@ -4,20 +4,28 @@ import Router from "next/router";
 import { Button, Heading } from "../components/Form/styled";
 import { deleteAllCookies } from "../utils/funcs";
 import { HomeContainer } from "../appStyled";
-
+import { toast } from "react-toastify";
+import { showToast, toastOptions } from "../components/Form/data";
+import { setTimeout } from "timers/promises";
 const Welcome: NextPage = () => {
   useEffect(() => {
-    // console.log("index visited");
-    // console.log(document.cookie);
+    console.log("welccome page is protected.");
+
     if (!document.cookie) {
-      // if no cookies exist take user back to /signup
-      Router.replace("/");
+      // if no cookies exist take user back to login - that way the welcome is protected!
+      toast.info("Login required to welcome page", {
+        ...toastOptions(),
+        autoClose: 1000,
+        delay: 500,
+      });
+      Router.replace("login");
     }
   }, []);
 
   const logOut = () => {
     deleteAllCookies();
-    Router.replace("/login");
+    showToast("success", "You logged out successfully", false, "/login", 3000);
+    // Router.replace("/login");
   };
   const handleClick = () => {
     // clear cookie so user has to login over again

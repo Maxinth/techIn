@@ -51,7 +51,7 @@ const SignUp = () => {
             "Please check your network and try again!"
           }`,
           false,
-          "/signup",
+          "signup",
           3000
         );
       });
