@@ -79,7 +79,7 @@ const Box = styled.div`
   flex-direction: column;
   width: 100%;
 
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   button {
     max-width: 200px;
   }

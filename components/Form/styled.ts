@@ -37,6 +37,10 @@ const Heading = styled.h1`
   @media (min-width: 900px) {
     text-align: left;
   }
+
+  @media (max-width: 380px) {
+    font-size: 32px;
+  }
   /* max-width: 528px; */
 `;
 const Label = styled.label`
@@ -66,6 +70,7 @@ const SelectBox = styled.select`
   width: 100%;
   border: 1px solid #eaeced;
   background-color: #f9fbfc;
+  text-transform: capitalize;
 `;
 
 const Button = styled.button`
@@ -94,7 +99,9 @@ const Button = styled.button`
     background-color: #fff;
   }
 `;
-const Option = styled.option``;
+const Option = styled.option`
+  text-transform: capitalize;
+`;
 
 const ErrorBox = styled.div`
   font-family: "Inter";
