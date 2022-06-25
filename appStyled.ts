@@ -61,15 +61,35 @@ const HomeContainer = styled.section`
   align-items: center;
   height: 100vh;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1rem 2rem;
   h1 {
     text-align: center;
     line-height: 1.8;
   }
   & button + button {
     margin-top: 1rem;
-    width: unset;
+    /* width: unset; */
   }
 `;
 
-export { GlobalStyle, HomeContainer };
+const Box = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  margin-bottom: 0.5rem;
+  button {
+    max-width: 200px;
+  }
+
+  @media (min-width: 520px) {
+    flex-direction: row;
+  }
+`;
+const Text = styled.p`
+  line-height: 1.8;
+`;
+
+export { GlobalStyle, HomeContainer, Box, Text };
