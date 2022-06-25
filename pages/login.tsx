@@ -21,6 +21,7 @@ const Login = () => {
     resolver: yupResolver(LoginSchema),
   });
 
+  console.log(baseUrl);
   const onSubmitHandler = (data: ILoginData) => {
     // console.log({ data });
     // toast to notifying user of current action
@@ -38,7 +39,7 @@ const Login = () => {
         document.cookie = `userId=${res?.data?._id};`;
         reset();
         // show Toast
-        showToast("success", "Login Successful!", true, "", 500);
+        showToast("success", "Login Successful!", true, "welcome", 500);
       })
       .catch((error) => {
         showToast(
