@@ -48,7 +48,7 @@ const Login = () => {
             "Please check your network and try again!"
           }`,
           false,
-          "/login",
+          "login",
           3000
         );
         console.log(error);

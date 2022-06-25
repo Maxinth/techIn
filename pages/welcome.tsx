@@ -24,7 +24,7 @@ const Welcome: NextPage = () => {
 
   const logOut = () => {
     deleteAllCookies();
-    showToast("success", "You logged out successfully", false, "/login", 3000);
+    showToast("success", "You logged out successfully!", true, "login", 200);
     // Router.replace("/login");
   };
   const handleClick = () => {
