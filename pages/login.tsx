@@ -38,7 +38,7 @@ const Login = () => {
         document.cookie = `userId=${res?.data?._id};`;
         reset();
         // show Toast
-        showToast("success", "Login Successful!", true, "welcome", 500);
+        showToast("success", "Login Successful!", true, "welcome", 500, 500);
       })
       .catch((error) => {
         showToast(

@@ -61,14 +61,15 @@ export const showToast = (
   msg: string,
   navigate?: boolean,
   path?: string,
-  closeTime: number = 2000
+  closeTime: number = 2000,
+  delay: number = 2000
 ) => {
   toast[`${id}`](msg, toastOptions(closeTime));
   // if navigate is supplied, move to path supplied
   if (navigate) {
     return setTimeout(() => {
       Router.push(`/${path}`);
-    }, 2000);
+    }, delay);
   }
   // else just show toast and do nothing.
   return null;
