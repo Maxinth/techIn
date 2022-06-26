@@ -68,7 +68,7 @@ const HomeContainer = styled.section`
   }
   & button + button {
     margin-top: 1rem;
-    /* width: unset; */
+    width: unset;
   }
 `;
 

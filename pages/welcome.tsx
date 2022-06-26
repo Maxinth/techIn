@@ -13,7 +13,7 @@ const Welcome: NextPage = () => {
 
     if (!document.cookie) {
       // if no cookies exist take user back to login - that way the welcome is protected!
-      toast.info("Login required to welcome page", {
+      toast.info("Kindly login to view this page", {
         ...toastOptions(),
         autoClose: 1000,
         delay: 500,
