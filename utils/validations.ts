@@ -11,6 +11,10 @@ export const SignUpSchema = yup.object().shape({
     .string()
     .min(8, "Full name must be at least 8 characters")
     .max(32, "Full name  should not exceed 32 characters")
+    .matches(
+      /^[a-z ,.'-]+$/i,
+      "Unsupported character. The full name field only accepts alphabets."
+    )
     .required("Full name must be at least 8 characters"),
   role: yup.string(),
 });
