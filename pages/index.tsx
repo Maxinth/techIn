@@ -6,7 +6,7 @@ import { HomeContainer, Box, Text } from "../appStyled";
 const Home: NextPage = () => {
   return (
     <HomeContainer>
-      <Heading>Welcome to the TechInOver Educational Platform</Heading>
+      <Heading>Welcome to the TIO Educational Platform</Heading>
       <Box>
         <Text>Wanna get started?</Text>
         <Button onClick={() => Router.push("signup")}>Sign up Free</Button>
